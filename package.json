@@ -1,6 +1,6 @@
 {
 	"name": "baghel",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "Devansh Baghel's Terminal Portfolio",
 	"main": "dist/index.js",
 	"bin": {
