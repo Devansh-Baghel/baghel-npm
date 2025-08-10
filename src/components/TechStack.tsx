@@ -1,4 +1,4 @@
-// src/components/Stack.tsx
+// src/components/TechStack.tsx
 import React from 'react';
 import { Box, Text } from 'ink';
 
@@ -13,17 +13,18 @@ const StackSection = ({ title, items }: { title: string, items: string[] }) => (
   </Box>
 );
 
-const Stack = () => (
-  <Box flexDirection="column" marginTop={1}>
-    <Text bold underline>
-      Tech Stack / Tools
-    </Text>
-    <Box flexDirection="row" marginTop={1}>
+const TechStack = () => (
+  <Box flexDirection="column" height="100%">
+    <Text bold underline>Tech Stack / Tools</Text>
+    <Box flexDirection="row" marginTop={1} flexGrow={1}>
       <StackSection title="Frontend" items={frontend} />
       <StackSection title="Backend" items={backend} />
       <StackSection title="Misc." items={misc} />
     </Box>
+    
+    {/* Spacer to maintain consistent height */}
+    <Box flexGrow={1} />
   </Box>
 );
 
-export default Stack;
+export default TechStack;
