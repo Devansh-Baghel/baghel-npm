@@ -1,105 +1,56 @@
+// src/components/Projects.tsx
 import React from "react";
 import { Box, Text } from "ink";
-import Gradient from "ink-gradient";
-import Link from "ink-link";
-import { COLORS, PROJECT_DATA } from "../utils/colors.js";
 
-const Projects: React.FC = () => {
-	return (
-		<Box flexDirection="column" paddingX={2}>
-			<Box marginBottom={3}>
-				<Gradient name="summer">
-					<Text bold fontSize={16}>
-						🎯 Selected Work
-					</Text>
-				</Gradient>
-			</Box>
+const projects = [
+	{
+		name: "CodeStash",
+		description: "The best way to save, store and share your code snippets.",
+		tech: ["Next.js", "React Query", "MongoDB", "Node.js"],
+	},
+	{
+		name: "SpendSync 💸✨",
+		description: "An all in one financial planning and money tracking tool.",
+		tech: ["Vite", "React", "TypeScript", "Express.js"],
+	},
+];
 
-			{PROJECT_DATA.map((project, index) => (
-				<Box
-					key={project.name}
-					flexDirection="column"
-					borderStyle="round"
-					borderColor={COLORS.accent}
-					padding={2}
-					marginBottom={2}
-				>
-					<Box marginBottom={1}>
-						<Text color={COLORS.accent} bold>
-							{project.icon} {project.name}
-						</Text>
-					</Box>
+// Corrected TechBadge component
+const TechBadge = ({ children }: { children: string }) => (
+	<Text backgroundColor="#333" color="#84cc16">
+		{" "}
+		{children}{" "}
+	</Text>
+);
 
-					<Box marginBottom={2} maxWidth={70}>
-						<Text color={COLORS.text}>{project.description}</Text>
-					</Box>
-
-					<Box flexDirection="row" marginBottom={2}>
-						<Box
-							borderStyle="single"
-							borderColor="green"
-							paddingX={2}
-							paddingY={1}
-							backgroundColor="green"
-						>
-							<Link url={project.liveUrl}>
-								<Text color="black" bold>
-									🌐 Live Demo
-								</Text>
-							</Link>
-						</Box>
-
-						<Box
-							marginLeft={2}
-							borderStyle="single"
-							borderColor={COLORS.border}
-							paddingX={2}
-							paddingY={1}
-						>
-							<Link url={project.sourceUrl}>
-								<Text color={COLORS.text} bold>
-									💻 Source Code
-								</Text>
-							</Link>
-						</Box>
-					</Box>
-
-					<Box flexDirection="column">
-						<Text color={COLORS.accent} bold>
-							🛠️ Tech Stack:
-						</Text>
-						<Box flexDirection="row" flexWrap="wrap" marginTop={1}>
-							{project.techStack.map((tech, techIndex) => (
-								<Box key={techIndex} marginRight={1} marginBottom={1}>
-									<Text
-										color={COLORS.muted}
-										backgroundColor={COLORS.bgLight}
-										bold
-									>
-										{" "}
-										{tech}{" "}
-									</Text>
-								</Box>
-							))}
-						</Box>
-					</Box>
-				</Box>
-			))}
-
+const Projects = () => (
+	<Box flexDirection="column" marginTop={1}>
+		<Text bold underline>
+			Selected Work
+		</Text>
+		{projects.map((project) => (
 			<Box
+				key={project.name}
 				borderStyle="round"
-				borderColor={COLORS.border}
-				padding={2}
-				justifyContent="center"
+				borderColor="gray"
+				flexDirection="column"
+				padding={1}
+				marginTop={1}
 			>
-				<Link url="https://github.com/devansh-baghel">
-					<Text color={COLORS.accent} bold>
-						🔗 More projects on GitHub
-					</Text>
-				</Link>
+				<Text bold color="green">
+					{project.name}
+				</Text>
+				<Text>{project.description}</Text>
+				<Box marginTop={1} flexWrap="wrap">
+					{project.tech.map((tech) => (
+						<Box marginRight={1} key={tech}>
+							<TechBadge>{tech}</TechBadge>
+						</Box>
+					))}
+				</Box>
 			</Box>
-		</Box>
-	);
-};
+		))}
+	</Box>
+);
 
 export default Projects;
