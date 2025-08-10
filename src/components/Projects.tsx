@@ -9,7 +9,7 @@ const projects = [
 		tech: ["Next.js", "React Query", "MongoDB", "Node.js"],
 	},
 	{
-		name: "SpendSync 💸✨",
+		name: "SpendSync",
 		description: "An all in one financial planning and money tracking tool.",
 		tech: ["Vite", "React", "TypeScript", "Express.js"],
 	},
